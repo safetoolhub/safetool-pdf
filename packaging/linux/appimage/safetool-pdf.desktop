@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=SafeTool PDF
+GenericName=PDF Optimizer
+Comment=Optimize and compress PDF files — lossless and lossy
+Exec=safetool-pdf-desktop %F
+Icon=safetool-pdf
+Terminal=false
+Categories=Office;
+MimeType=application/pdf;
+Keywords=pdf;optimize;compress;trim;
+StartupNotify=true
+StartupWMClass=SafeTool PDF

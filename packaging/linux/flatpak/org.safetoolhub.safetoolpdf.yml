@@ -1,0 +1,46 @@
+# Flatpak manifest for SafeTool PDF
+# Uses the pre-built PyInstaller binary (dist/safetool-pdf/) as source.
+# Build with: flatpak-builder --user --force-clean --repo=repo build-dir packaging/linux/flatpak/org.safetoolhub.safetoolpdf.yml
+# Bundle:     flatpak build-bundle repo SafeToolPDF.flatpak org.safetoolhub.safetoolpdf
+
+app-id: org.safetoolhub.safetoolpdf
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: safetool-pdf-desktop
+
+finish-args:
+  # File access for opening / saving PDFs
+  - --filesystem=home
+  # Display
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
+  # GPU acceleration
+  - --device=dri
+
+modules:
+  - name: safetool-pdf
+    buildsystem: simple
+    build-commands:
+      # Install the pre-built PyInstaller bundle
+      - install -d /app/opt/safetool-pdf
+      - cp -a dist/safetool-pdf/* /app/opt/safetool-pdf/
+
+      # Launcher script
+      - install -Dm755 packaging/linux/flatpak/safetool-pdf-launcher.sh /app/bin/safetool-pdf-desktop
+
+      # Desktop file (icon name must match app-id for appstream-compose)
+      - install -Dm644 packaging/linux/appimage/safetool-pdf.desktop /app/share/applications/org.safetoolhub.safetoolpdf.desktop
+      - sed -i 's/^Icon=.*/Icon=org.safetoolhub.safetoolpdf/' /app/share/applications/org.safetoolhub.safetoolpdf.desktop
+
+      # Icon
+      - install -Dm644 assets/icon.png /app/share/icons/hicolor/512x512/apps/org.safetoolhub.safetoolpdf.png
+
+      # AppStream metainfo
+      - install -Dm644 packaging/linux/flatpak/org.safetoolhub.safetoolpdf.metainfo.xml /app/share/metainfo/org.safetoolhub.safetoolpdf.metainfo.xml
+
+    sources:
+      - type: dir
+        path: ../../..

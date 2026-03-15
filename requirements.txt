@@ -1,0 +1,12 @@
+# Runtime dependencies
+pikepdf>=9
+PyMuPDF>=1.25
+PySide6-Essentials>=6.7
+Pillow>=10
+qtawesome>=1.4
+
+# Development dependencies
+pytest>=8
+pytest-qt>=4
+fpdf2>=2
+reportlab>=4
