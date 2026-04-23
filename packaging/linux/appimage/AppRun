@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# AppRun — standard entry point for the SafeTool PDF AppImage
+# SafeTool PDF Packaging
+# Copyright (C) 2026 safetoolhub.org
+# License: GPL-3.0-or-later
+
+set -euo pipefail
+
+SELF="$(readlink -f "$0")"
+APPDIR="${SELF%/*}"
+
+# Make bundled Ghostscript available if present (inside opt/safetool-pdf/vendor/gs/bin/)
+if [ -d "${APPDIR}/opt/safetool-pdf/vendor/gs/bin" ]; then
+    export PATH="${APPDIR}/opt/safetool-pdf/vendor/gs/bin:${PATH}"
+fi
+
+exec "${APPDIR}/opt/safetool-pdf/safetool-pdf-desktop" "$@"

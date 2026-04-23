@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SafeTool PDF AppStream metainfo
+     Copyright (C) 2026 safetoolhub.org
+     License: GPL-3.0-or-later -->
+<component type="desktop-application">
+  <id>org.safetoolhub.safetoolpdf</id>
+  <name>SafeTool PDF</name>
+  <summary>Privacy-first PDF optimizer — lossless and lossy compression</summary>
+  <metadata_license>GPL-3.0-or-later</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <description>
+    <p>
+      SafeTool PDF optimizes and compresses PDF files using lossless and lossy
+      compression techniques. All processing is done 100% locally on your
+      machine — no cloud, no telemetry, complete privacy.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Lossless optimization (pikepdf/QPDF): linearization, stream
+          deduplication, object compaction — typically 5-20% savings</li>
+      <li>Balanced compression: image recompression at 150 DPI + font
+          subsetting — typically 20-50% savings</li>
+      <li>Maximum compression: aggressive image downsampling + full
+          Ghostscript rewrite — typically 40-80% savings</li>
+      <li>Custom presets with full control over DPI, quality, and stages</li>
+      <li>Batch processing for multiple PDF files</li>
+      <li>Detailed PDF analysis: images, fonts, forms, signatures, bookmarks</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">org.safetoolhub.safetoolpdf.desktop</launchable>
+
+  <url type="homepage">https://safetoolhub.org</url>
+  <url type="bugtracker">https://github.com/safetoolhub/safetool-pdf/issues</url>
+
+  <developer_name>SafeToolHub</developer_name>
+
+  <provides>
+    <binary>safetool-pdf-desktop</binary>
+  </provides>
+
+  <content_rating type="oars-1.1" />
+
+  <categories>
+    <category>Office</category>
+    <category>Utility</category>
+  </categories>
+
+  <keywords>
+    <keyword>pdf</keyword>
+    <keyword>optimize</keyword>
+    <keyword>compress</keyword>
+    <keyword>privacy</keyword>
+  </keywords>
+</component>

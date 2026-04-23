@@ -1,0 +1,666 @@
+{
+  "header": {
+    "by_safetoolhub": "by safetoolhub.org",
+    "settings": "Settings",
+    "about": "About SafeTool PDF"
+  },
+  "file_selection": {
+    "step_1_title": "1. Select PDF Files",
+    "add_files": " Add Files",
+    "formats_hint": "Supports PDF files — single or multiple selection",
+    "step_2_title": "2. Choose a Tool",
+    "dialog_title": "Select PDF Files",
+    "dialog_filter": "PDF Files (*.pdf)",
+    "no_files": "No files selected"
+  },
+  "dropzone": {
+    "drop_here": "Drop PDF files here",
+    "browse_hint": "or click anywhere to browse files…",
+    "dragging": "Drop here!"
+  },
+  "file_list": {
+    "remove_file": "Remove file",
+    "view_details": "View Details",
+    "remove": "Remove",
+    "no_files": "No files selected"
+  },
+  "tool_card": {
+    "disabled_tooltip": "Feature not yet finished",
+    "optimize": {
+      "title": "Optimize PDF",
+      "description": "Intelligently reduce file size while preserving document quality and structure.",
+      "action": "Get Started"
+    },
+    "combine": {
+      "title": "Combine PDFs",
+      "description": "Seamlessly merge multiple documents into a single professional PDF file.",
+      "action": "Get Started"
+    },
+    "number": {
+      "title": "Numbering",
+      "description": "Add a correlative red number to the top-right corner of the first page of each PDF.",
+      "action": "Get Started"
+    },
+    "metadata": {
+      "title": "Remove Metadata",
+      "description": "Protect your privacy by removing author, date, software, and XMP metadata from your PDFs.",
+      "action": "Get Started"
+    },
+    "unlock": {
+      "title": "Manage Permissions",
+      "description": "Remove passwords if you know them and restore permissions like printing, copying, or modifying content.",
+      "action": "Get Started"
+    }
+  },
+  "merge_screen": {
+    "title": "Combine PDFs",
+    "subtitle": "Files will be merged in the order shown below.",
+    "move_up": "Move Up",
+    "move_down": "Move Down",
+    "drag_to_reorder": "Drag to reorder",
+    "btn_merge": "Merge Files",
+    "progress_title": "Merging…",
+    "progress_status": "Adding {filename} ({current}/{total})",
+    "output_filename_label": "Combined file name:",
+    "output_filename_placeholder": "merged"
+  },
+  "simple_tool": {
+    "btn_execute": "Execute",
+    "progress_title": "Processing…",
+    "progress_status": "Processing {filename} ({current}/{total})",
+    "numbering_title": "Automatic Numbering",
+    "numbering_subtitle": "A correlative number will be assigned to each file, starting from:",
+    "numbering_start_label": "Start number",
+    "metadata_title": "Remove Metadata",
+    "metadata_subtitle": "All metadata (author, dates, software, XMP) will be removed from the selected files.",
+    "unlock_title": "Remove Password & Restrictions",
+    "unlock_subtitle": "Enter the password if the PDF is encrypted. PDFs with permission-only restrictions will be processed automatically without a password.",
+    "unlock_password_label": "Password",
+    "unlock_password_placeholder": "Enter PDF password…",
+    "unlock_wrong_password": "Wrong password for {filename}",
+    "no_password_detected": "No password (will not be processed)",
+    "encrypted_not_processable": "Password protected (will not be processed)",
+    "no_encrypted_files": "None of the selected files have a password. Nothing to process.",
+    "no_processable_files": "All files are encrypted. Nothing to process.",
+    "number_header": "NUMBER",
+    "files_header": "ORIGINAL FILE",
+    "output_header": "OUTPUT NAME",
+    "files_info": "{count} file(s) selected  •  {size} total",
+    "open_file": "Open PDF",
+    "view_details": "View details",
+    "rename_output": "Rename output",
+    "rename_dialog_title": "Output file name",
+    "rename_dialog_label": "File name:"
+  },
+  "unlock_screen": {
+    "title": "Permissions & Password Management",
+    "subtitle": "Modify access, printing, editing permissions and more. You can also set or remove passwords.",
+    "legend_title": "Permission Types",
+    "perm_print_short": "Print",
+    "perm_print_desc": "Allows printing the document in low resolution.",
+    "perm_print_hq_short": "Print HQ",
+    "perm_print_hq_desc": "Allows printing the document in high resolution / maximum quality. Note: enabling this permission also automatically enables normal print permission.",
+    "perm_modify_short": "Modify",
+    "perm_modify_desc": "Allows editing document content (text, images, etc.).",
+    "perm_extract_short": "Extract",
+    "perm_extract_desc": "Allows copying or extracting text and images from the document.",
+    "perm_annotate_short": "Annotate",
+    "perm_annotate_desc": "Allows adding comments, highlights, and annotations to the document.",
+    "perm_forms_short": "Forms",
+    "perm_forms_desc": "Allows filling in interactive form fields in the document.",
+    "perm_access_short": "Accessibility",
+    "perm_access_desc": "Allows extracting content for accessibility tools (screen readers).",
+    "perm_assembly_short": "Assemble",
+    "perm_assembly_desc": "Allows inserting, rotating, or deleting pages in the document.",
+    "col_file": "FILE",
+    "col_password": "PASSWORD",
+    "col_output": "OUTPUT NAME",
+    "select_all": "Select all",
+    "enter_password": "Enter password…",
+    "btn_validate": "Validate",
+    "password_tooltip": "Set user password for the output PDF",
+    "new_password_title": "Output PDF Passwords",
+    "new_password_desc": "Optionally set passwords to protect the output files. Leave empty to apply no password.",
+    "user_password_label": "User password",
+    "user_password_placeholder": "Password to open the PDF…",
+    "owner_password_label": "Owner password",
+    "owner_password_placeholder": "Password to modify permissions…",
+    "btn_remove_all": "Remove all",
+    "btn_apply": "Apply Permissions",
+    "wrong_password": "Wrong password",
+    "password_ok": "Password correct"
+  },
+  "tool_results": {
+    "title_success": "Operation completed",
+    "title_partial": "Operation completed with errors",
+    "title_failure": "Operation failed",
+    "summary_merge": "{count} files merged into one — {size}",
+    "summary_batch": "{success} of {total} files processed successfully",
+    "col_input": "Original file",
+    "col_output": "Generated file",
+    "col_status": "Status",
+    "status_ok": "OK",
+    "status_error": "Error",
+    "btn_start_over": "Start Over",
+    "btn_open_folder": "Open Folder",
+    "btn_use_another_tool": "Use another tool",
+    "report_title": "SafeTool PDF \u2014 Tool Report",
+    "report_files_processed": "Files processed: {count}",
+    "report_success": "Processed successfully: {count}",
+    "report_failed": "Failed: {count}",
+    "report_status_ok": "Status: OK",
+    "report_status_error": "Status: ERROR \u2014 {reason}"
+  },
+  "presets": {
+    "lossless": {
+      "label": "Lossless",
+      "desc": "Reorganises internal PDF structures (object streams, compression) without touching images or fonts. The output is visually identical to the original."
+    },
+    "moderate": {
+      "label": "Moderate",
+      "desc": "Recompresses images to 150 DPI / quality 80 and enables font subsetting via Ghostscript. Good balance between size and quality; most effective on image-heavy PDFs."
+    },
+    "aggressive": {
+      "label": "Aggressive",
+      "desc": "Recompresses images to 96 DPI / quality 50, performs a full Ghostscript rewrite, and removes metadata. Best results on PDFs with many large images; may noticeably reduce image sharpness."
+    },
+    "custom": {
+      "label": "Custom",
+      "desc": "Choose your own DPI, quality, Ghostscript, and cleanup settings. Use this when the presets don't fit your needs."
+    }
+  },
+  "strategy": {
+    "analysing_title": "Analysing files…",
+    "analysing_status": "Reading structures…",
+    "analysing_n_files": "Analysing {count} file(s)…",
+    "estimating_title": "Estimating savings…",
+    "estimating_status": "Estimating {preset} on {filename} ({current}/{total})",
+    "optimising_title": "Optimising…",
+    "optimising_status": "File {index}/{total}: {stage} — {message}",
+    "cancel": "Cancel",
+    "back": "  Back",
+    "select_placeholder": "Select...",
+    "apply_to_all": "Apply to all:",
+    "skip_all": "Skip all",
+    "apply_all_tooltip": "Set the same strategy for every file",
+    "skip": "Skip",
+    "file_header": "FILE",
+    "skip_header": "SKIP",
+    "optimize_all": "  Optimize All Files",
+    "nothing_to_optimize_title": "Nothing to optimise",
+    "nothing_to_optimize_msg": "All files are set to Skip. Select a strategy for at least one file.",
+    "info_alert": "The strategy with the highest compression has been auto-selected for each file. Review the selection — <b>Lossless</b> is often the best choice since it preserves full quality with no visual changes. Use the <b>eye</b> icon to preview the result before deciding.",
+    "files_selected_info": "{count} files selected  •  {size} total",
+    "preview_tooltip": "Preview {preset} result",
+    "view_details": "View Details",
+    "custom_tooltip": "To use customizable settings, select 'Custom' from the \"Apply to all...\" dropdown\nor click the individual file column in the table underneath.",
+    "analysing_file": "Analysing file {current}/{total}: {filename}",
+    "gs_required": "Requires GS",
+    "gs_required_tooltip": "This strategy requires Ghostscript. Install it to unlock this option.",
+    "gs_not_available_warning": "Ghostscript is not installed. <b>Moderate</b> and <b>Aggressive</b> strategies are unavailable. Install Ghostscript to unlock all compression options."
+  },
+  "custom_panel": {
+    "title": "CUSTOM STRATEGY SETTINGS",
+    "hide_tooltip": "Hide panel (settings are preserved)",
+    "compress_images": "Compress Images",
+    "compress_images_tooltip": "Enable advanced image compression to reduce file size.",
+    "target_dpi": "Target DPI",
+    "target_dpi_tooltip": "Target image resolution. Lower values create significantly smaller files but reduce image clarity.",
+    "jpeg_quality": "JPEG Quality",
+    "jpeg_quality_tooltip": "Image compression strength. Lower values save more space but can introduce visual artifacts.",
+    "ghostscript_process": "Ghostscript Process",
+    "ghostscript_tooltip": "Use Ghostscript engine for deep PDF structural optimization.",
+    "subset_fonts": "Subset Fonts",
+    "subset_fonts_tooltip": "Remove unused characters from embedded fonts. Can drastically reduce size if many fonts are used.",
+    "clean_rewrites": "Clean Rewrites",
+    "clean_rewrites_tooltip": "Rewrite perfectly formatted structures. Removes unknown objects but can break complex forms.",
+    "cleanup_label": "Cleanup:",
+    "metadata": "Metadata",
+    "metadata_tooltip": "Strip redundant document properties, author info, and XMP metadata.",
+    "forms": "Forms",
+    "forms_tooltip": "Convert interactive form fields into static text, making them non-editable but lighter.",
+    "js_scripts": "JS Scripts",
+    "js_scripts_tooltip": "Remove embedded JavaScript and macros for improved safety and slightly smaller size.",
+    "estimate_btn": "  Estimate",
+    "estimate_tooltip": "Run a quick simulation to estimate final file size with these settings."
+  },
+  "results": {
+    "title": "Optimisation Complete!",
+    "title_skipped": "Done — {count} file(s) skipped",
+    "summary_ok": "Saved {size} overall ({pct}% average reduction). {ok}/{total} files optimised successfully.",
+    "summary_none": "No files were optimised.",
+    "header_file_path": "File Path",
+    "header_original": "Original",
+    "header_optimised": "Optimised",
+    "header_strategy": "Strategy",
+    "header_compression": "Compression",
+    "start_over": "  Start Over",
+    "use_another_tool": "  Use another tool",
+    "export_report": "  Export Report",
+    "open_folder": "  Open Folder",
+    "skipped": "Skipped",
+    "total_row": "TOTAL ({count} files)",
+    "mixed_strategy": "Mixed",
+    "open_optimised_file": "Open Optimised File",
+    "open_containing_folder": "Open Containing Folder",
+    "view_details": "View Details",
+    "export_dialog_title": "Export Results Report",
+    "export_default_name": "safetool_pdf_report.txt",
+    "export_filter": "Text Files (*.txt);;All Files (*)",
+    "report_title": "SafeTool PDF — Optimization Report",
+    "report_files_processed": "Files processed: {count}",
+    "report_success": "Successfully optimised: {count}",
+    "report_skipped": "Skipped: {count}",
+    "report_total_original": "Total original size:   {size}",
+    "report_total_optimised": "Total optimised size:  {size}",
+    "report_total_saved": "Total saved:           {size}",
+    "report_avg_reduction": "Average reduction:     {pct}%",
+    "report_input": "Input:  {path}",
+    "report_output": "Output: {path}",
+    "report_strategy": "Strategy:       {name}",
+    "report_original_size": "Original size:  {size}",
+    "report_optimised_size": "Optimised size: {size}",
+    "report_reduction": "Reduction:      {pct}%",
+    "report_status_skipped": "Status: SKIPPED — {reason}",
+    "report_footer": "Generated by SafeTool PDF — https://safetoolhub.org",
+    "file_size_increased": "File size increased by {pct}%",
+    "open_optimised_tooltip": "Open Optimised File",
+    "open_original_tooltip": "Open original file",
+    "open_output_tooltip": "Open generated file"
+  },
+  "common": {
+    "close": "Close",
+    "unknown": "Unknown",
+    "cancel": "Cancel"
+  },
+  "about": {
+    "title": "About {name}",
+    "tab": {
+      "welcome": "Welcome",
+      "tools": "Tools",
+      "info": "Info"
+    },
+    "header": {
+      "version": "v{version}",
+      "privacy_badge": "100% Private & Offline"
+    },
+    "welcome": {
+      "title": "Welcome to SafeTool PDF!",
+      "description": "Optimize your PDF files securely and privately. All processing is done locally on your computer.",
+      "workflow_title": "How does it work?",
+      "workflow_description": "Follow these 4 simple steps to optimize your PDFs:",
+      "steps": {
+        "1": {
+          "title": "Select your files",
+          "description": "Drag & drop or select one or more PDF files."
+        },
+        "2": {
+          "title": "Automatic analysis",
+          "description": "The PDF structure is analyzed: images, fonts, forms, etc."
+        },
+        "3": {
+          "title": "Choose a strategy",
+          "description": "Compare presets (Lossless, Balanced, Maximum) and pick your preference."
+        },
+        "4": {
+          "title": "Get results",
+          "description": "The optimized file is saved alongside the original with the _safetoolhub suffix."
+        }
+      },
+      "tips": {
+        "privacy": {
+          "title": "Total privacy",
+          "description": "Your files never leave your computer. No uploads, no tracking."
+        },
+        "presets": {
+          "title": "Smart presets",
+          "description": "3 ready-to-use strategies, plus a custom option."
+        },
+        "ghostscript": {
+          "title": "Ghostscript",
+          "description": "Install Ghostscript to unlock maximum compression with font subsetting."
+        }
+      },
+      "system_tools": {
+        "title": "System tools",
+        "info": "Ghostscript is optional but significantly improves compression results.",
+        "gs_checking": "Checking for Ghostscript…",
+        "gs_installed": "✓ Ghostscript detected successfully",
+        "gs_not_installed": "✗ Ghostscript not found — Balanced and Maximum strategies will be limited",
+        "check_button": "Check",
+        "check_button_tooltip": "Check Ghostscript availability",
+        "install_how": "How to install Ghostscript?",
+        "install_hide": "Hide instructions",
+        "install_instructions": "<b>Linux:</b> <code>sudo apt install ghostscript</code><br><b>macOS:</b> <code>brew install ghostscript</code><br><b>Windows:</b> Download from <a href='https://ghostscript.com/releases/gsdnld.html'>ghostscript.com</a>"
+      }
+    },
+    "tools_section": {
+      "title": "SafeTool PDF Tools",
+      "available": {
+        "title": "Available",
+        "subtitle": "ready to use"
+      },
+      "upcoming": {
+        "title": "Coming soon",
+        "subtitle": "in development"
+      },
+      "tools": {
+        "optimizer": {
+          "title": "PDF Optimizer",
+          "description": "Reduce the size of your PDFs with lossless compression or advanced options."
+        },
+        "merge": {
+          "title": "Merge PDFs",
+          "description": "Combine multiple PDF files into a single document."
+        },
+        "numberer": {
+          "title": "Page Numberer",
+          "description": "Add page numbering to your PDF documents."
+        },
+        "split": {
+          "title": "Split PDF",
+          "description": "Separate a PDF into multiple individual files."
+        }
+      }
+    },
+    "info": {
+      "title": "Application information",
+      "app_card": {
+        "title": "Application details",
+        "name": "Name",
+        "version": "Version",
+        "developed_by": "Developed by",
+        "platforms": "Platforms",
+        "platforms_value": "Windows, macOS, Linux"
+      },
+      "formats": {
+        "title": "Supported formats",
+        "input": "Input",
+        "output": "Output",
+        "output_value": "Optimized PDF (_safetoolhub)"
+      },
+      "contact": {
+        "title": "Contact"
+      },
+      "license": {
+        "title": "License"
+      }
+    },
+    "dev": {
+      "tagline": "Safe tools for digital files",
+      "values": {
+        "offline": {
+          "title": "100% Offline",
+          "description": "No connection needed"
+        },
+        "no_tracking": {
+          "title": "No tracking",
+          "description": "Zero telemetry"
+        },
+        "open_source": {
+          "title": "Open source",
+          "description": "GPLv3 License"
+        }
+      },
+      "trust_footer": "✓ Your files never leave your computer"
+    },
+    "nav": {
+      "home": "Home",
+      "view_tools": "View tools",
+      "view_info": "View info"
+    }
+  },
+  "settings": {
+    "window_title": "Settings",
+    "header": "Settings",
+    "appearance": "Appearance",
+    "theme_label": "Theme:",
+    "theme_light": "Light",
+    "theme_system": "System",
+    "theme_note": "Note: SafeTool PDF uses a light Material Design theme by default. Changes take effect on restart.",
+    "output": "Output",
+    "output_desc": "Define the default suffix for modified files.",
+    "suffix_label": "Default file suffix:",
+    "suffix_note": "This suffix will be added by default to modified files, but can be changed later.",
+    "suffix_placeholder": "_safetoolpdf",
+    "suffix_preview": "Preview: report{suffix}.pdf",
+    "suffix_error_empty": "Suffix cannot be empty.",
+    "suffix_error_invalid": "Suffix contains invalid characters.",
+    "suffix_error_long": "Suffix is too long (max 60 characters).",
+    "ghostscript": "Ghostscript",
+    "ghostscript_desc": "Processing engine for advanced optimizations.",
+    "gs_status_label": "Status:",
+    "gs_installed": "Installed ✓",
+    "gs_not_found": "Not found ✗",
+    "gs_note": "Ghostscript enables font subsetting and deep PDF rewrite. It is optional but highly recommended.",
+    "language": "Language",
+    "language_desc": "Change the application interface language.",
+    "language_label": "Language:",
+    "language_note": "Changing the language requires an application restart.",
+    "debugging": "Debugging",
+    "debugging_desc": "Tools for diagnosis and bug fixing.",
+    "enable_logging": "Save log files to facilitate error debugging",
+    "logging_note": "Logs will be saved at: {path}",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "details": {
+    "window_title": "PDF Details — {filename}",
+    "file_information": "File Information",
+    "document_metadata": "Document Metadata",
+    "security_encryption": "Security & Encryption",
+    "pdf_permissions": "PDF Permissions",
+    "structure_compliance": "Structure & Compliance",
+    "content_features": "Content Features",
+    "filename": "Filename",
+    "directory": "Directory",
+    "file_size": "File Size",
+    "pages": "Pages",
+    "pdf_version": "PDF Version",
+    "page_size": "Page Size",
+    "page_rotation": "Page Rotation",
+    "created": "Created",
+    "last_modified": "Last Modified",
+    "permissions": "Permissions",
+    "internal_objects": "Internal Objects",
+    "title": "Title",
+    "author": "Author",
+    "subject": "Subject",
+    "keywords": "Keywords",
+    "creator": "Creator",
+    "producer": "Producer",
+    "pdf_creation_date": "PDF Creation Date",
+    "pdf_modification_date": "PDF Modification Date",
+    "encrypted": "Encrypted",
+    "encryption_method": "Encryption Method",
+    "encryption_version": "Encryption Version (V)",
+    "encryption_revision": "Encryption Revision (R)",
+    "key_length": "Key Length (bits)",
+    "cipher_method": "Cipher Method",
+    "enc_permissions": "Permissions",
+    "password_required": "Password Required",
+    "digital_signatures": "Digital Signatures",
+    "contains_javascript": "Contains JavaScript",
+    "linearized": "Linearized (Fast Web View)",
+    "pdfa_compliant": "PDF/A Compliant",
+    "pdfa_yes": "Yes — Level {level}",
+    "accessibility_tags": "Accessibility Tags",
+    "already_optimized": "Already Optimized",
+    "estimated_reduction": "Estimated Reduction",
+    "feature_images": "Images",
+    "feature_images_detail": "{count} found — {size} total",
+    "feature_fonts": "Fonts",
+    "feature_fonts_detail": "{count} found",
+    "feature_forms": "Interactive Forms",
+    "feature_signatures": "Digital Signatures",
+    "feature_bookmarks": "Bookmarks / Outlines",
+    "feature_links": "Hyperlinks",
+    "feature_layers": "Layers (OCG)",
+    "feature_javascript": "JavaScript",
+    "feature_attachments": "File Attachments",
+    "feature_thumbnails": "Page Thumbnails",
+    "feature_annotations": "Annotations",
+    "feature_accessibility": "Accessibility Tags",
+    "feature_metadata": "Document Metadata",
+    "badge_encrypted": "ENCRYPTED",
+    "badge_signed": "SIGNED",
+    "badge_optimized": "OPTIMIZED",
+    "badge_pdfa": "PDF/A-{level}",
+    "yes": "Yes",
+    "no": "No",
+    "na": "N/A",
+    "unknown": "Unknown",
+    "close": "  Close",
+    "pages_subtitle": "{count} pages",
+    "embedded_images_title": "Embedded Images ({count})",
+    "image_dimensions": "Dimensions",
+    "image_dpi": "DPI",
+    "image_colorspace": "Colorspace",
+    "image_filter": "Filter",
+    "image_size": "Size",
+    "image_more": "… and {count} more images",
+    "image_summary": "Total: {size}  •  Avg DPI: {avg_dpi}  •  Count: {count}",
+    "fonts_title": "Fonts ({count})",
+    "font_name": "Name",
+    "font_type": "Type",
+    "font_embedded": "Embedded",
+    "font_subset": "Subset",
+    "font_summary": "Embedded: {embedded}/{total}  •  Subset: {subset}/{total}",
+    "warnings_title": "Warnings",
+    "perm_print": "Print",
+    "perm_print_high_quality": "Print high quality",
+    "perm_modify": "Modify content",
+    "perm_extract": "Copy/extract text",
+    "perm_annotate": "Add annotations",
+    "perm_fill_forms": "Fill forms",
+    "perm_extract_accessibility": "Extract for accessibility",
+    "perm_assemble": "Assemble (insert/rotate/delete pages)",
+    "permissions_value": "Permissions value (/P)",
+    "access_level": "Access level",
+    "owner_access": "Owner (full access)",
+    "user_access": "User (restricted)",
+    "pdf_permissions_effective": "PDF Permissions (effective)",
+    "pdf_permissions_stored": "PDF Permissions (stored in /P)",
+    "permissions_note": "Note",
+    "owner_access_note": "You have owner access — all permissions are available regardless of stored restrictions"
+  },
+  "cli": {
+    "description": "{app_name} {version} — Optimize PDF files from the command line.",
+    "examples_title": "Examples:",
+    "arg_files": "One or more PDF files to optimize.",
+    "arg_preset": "Optimization preset (default: lossless).",
+    "arg_output": "Output directory (default: same as input).",
+    "arg_password": "Password for encrypted PDFs.",
+    "arg_simplify": "Use 'Simplify' preservation mode (removes interactive features).",
+    "arg_dry_run": "Analyze files without optimizing.",
+    "arg_suffix": "Output file suffix (default: '{suffix}').",
+    "arg_verbose": "Verbose output.",
+    "custom_group": "custom mode",
+    "custom_group_desc": "Use --custom to enable custom optimization parameters.",
+    "arg_custom": "Enable custom optimization mode (ignores --preset).",
+    "arg_dpi": "Target DPI for image recompression (default: 150).",
+    "arg_quality": "JPEG quality for image recompression (default: 80).",
+    "arg_font_subset": "Enable Ghostscript font subsetting.",
+    "arg_full_rewrite": "Enable Ghostscript full PDF rewrite.",
+    "arg_remove_metadata": "Remove document metadata.",
+    "arg_flatten_forms": "Flatten interactive forms.",
+    "arg_remove_js": "Remove JavaScript from the PDF.",
+    "cancelling": "Cancelling…",
+    "error_not_found": "ERROR: File not found: {path}",
+    "warning_not_pdf": "WARNING: Skipping non-PDF file: {path}",
+    "no_valid_files": "No valid PDF files to process.",
+    "file_label": "File: {path}",
+    "error_generic": "ERROR: {error}",
+    "dry_run_pages": "  Pages: {count}",
+    "dry_run_size": "  Size: {size} bytes",
+    "dry_run_images": "  Images: {count}",
+    "dry_run_fonts": "  Fonts: {count}",
+    "dry_run_encrypted": "  Encrypted: {value}",
+    "dry_run_signatures": "  Signatures: {value}",
+    "dry_run_pdfa": "  PDF/A: {value} {level}",
+    "dry_run_optimized": "  Optimized: {value}",
+    "dry_run_reduction": "  Est. reduction: ~{pct}%"
+  },
+  "core": {
+    "optimizer": {
+      "file_not_found": "File not found: {path}",
+      "not_a_pdf": "Not a PDF file: {path}",
+      "cancelled": "Operation cancelled.",
+      "analyzing": "Analyzing PDF…",
+      "signatures_warning": "This PDF contains digital signatures. Destructive optimizations would invalidate the signatures. Use 'Preserve' mode or remove the signatures first.",
+      "already_optimized": "This PDF appears to be already well-optimized. Reduction potential is estimated at <5%.",
+      "gs_not_available": "Ghostscript not available — font subsetting and full rewrite will be skipped.",
+      "pdfa_warning": "This PDF claims PDF/A-{level} conformance. Some optimizations may break PDF/A compliance.",
+      "running_lossless": "Running lossless optimization…",
+      "rewriting_images": "Rewriting images…",
+      "running_gs": "Running Ghostscript…",
+      "running_cleanup": "Running cleanup…",
+      "verifying": "Verifying output…",
+      "moving_output": "Moving output file…",
+      "complete": "Optimization complete."
+    },
+    "verifier": {
+      "no_output": "Output file does not exist: {path}",
+      "empty_output": "Output file is empty.",
+      "cannot_open": "Cannot open optimized PDF: {error}",
+      "page_mismatch": "Page count mismatch: expected {expected}, got {actual}",
+      "file_larger": "Optimized file is {pct}% larger than the original ({optimized} > {original} bytes)."
+    },
+    "analyzer": {
+      "wrong_password": "PDF is encrypted; wrong password.",
+      "encrypted_incomplete": "PDF is encrypted; some analysis may be incomplete.",
+      "encrypted_pikepdf": "PDF is encrypted — pikepdf could not open it."
+    },
+    "stages": {
+      "lossless": {
+        "opening": "Opening PDF…",
+        "removing_unreferenced": "Removing unreferenced resources…",
+        "coalescing": "Coalescing page content streams…",
+        "externalizing": "Externalizing inline images…",
+        "preparing": "Preparing to write optimized PDF…",
+        "writing": "Writing optimized PDF…",
+        "complete": "Lossless stage complete.",
+        "unreferenced_error": "Could not remove unreferenced resources: {error}"
+      },
+      "lossy_images": {
+        "opening": "Opening PDF for image rewrite…",
+        "rewriting": "Rewriting images…",
+        "applying": "Applying image rewrite…",
+        "saving": "Saving rewritten PDF…",
+        "complete": "Lossy images stage complete.",
+        "unsupported": "PyMuPDF version does not support rewrite_images(); lossy image optimization skipped.",
+        "error": "Image rewrite encountered an error: {error}"
+      },
+      "lossy_gs": {
+        "running": "Running Ghostscript…",
+        "processing": "Ghostscript processing…",
+        "complete": "Ghostscript stage complete.",
+        "timeout": "Ghostscript timed out after {seconds}s",
+        "cannot_execute": "Cannot execute GS: {error}",
+        "exit_error": "Ghostscript exited with code {code}: {stderr}",
+        "no_output": "Ghostscript produced no output or an empty file.",
+        "not_found": "Ghostscript binary not found. Font subsetting and full rewrite require Ghostscript to be installed or bundled."
+      },
+      "cleanup": {
+        "opening": "Opening PDF for cleanup…",
+        "removing_metadata": "Removing metadata…",
+        "removing_attachments": "Removing attachments…",
+        "removing_javascript": "Removing JavaScript…",
+        "removing_thumbnails": "Removing thumbnails…",
+        "removing_bookmarks": "Removing bookmarks…",
+        "removing_layers": "Removing layer definitions…",
+        "removing_accessibility": "Removing accessibility tags…",
+        "removing_links": "Removing links…",
+        "saving": "Saving after pikepdf cleanup…",
+        "flattening_forms": "Flattening forms/annotations…"
+      }
+    },
+    "gs_detect": {
+      "using_bundled": "Using bundled Ghostscript: {path}",
+      "bundled_old": "Bundled GS found but version too old: {path}",
+      "using_system": "Using system Ghostscript: {path}",
+      "system_old": "System GS found but version too old: {path}",
+      "not_found": "Ghostscript not found."
+    }
+  }
+}

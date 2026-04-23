@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "safetool-pdf"
+version = "0.1.0"
+description = "Desktop application to optimize PDF files — lossless and lossy compression."
+readme = "README.md"
+license = "GPL-3.0-or-later"
+requires-python = ">=3.11"
+authors = [
+    { name = "safetoolhub.org", email = "contact@safetoolhub.org" },
+]
+keywords = ["pdf", "optimize", "compress", "desktop", "pyside6"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "pikepdf>=9",
+    "PyMuPDF>=1.25",
+    "PySide6-Essentials>=6.7",
+    "Pillow>=10",
+    "qtawesome>=1.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-qt>=4",
+    "fpdf2>=2",
+    "reportlab>=4",
+]
+
+[project.urls]
+Homepage = "https://safetoolhub.org"
+Repository = "https://github.com/safetoolhub/safetool-pdf"
+Issues = "https://github.com/safetoolhub/safetool-pdf/issues"
+
+[project.scripts]
+safetool-pdf = "safetool_pdf_cli.main:main"
+
+[project.gui-scripts]
+safetool-pdf-desktop = "safetool_pdf_desktop.app:main"
+
+[tool.setuptools.packages.find]
+include = ["safetool_pdf_core*", "safetool_pdf_cli*", "safetool_pdf_desktop*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v"
