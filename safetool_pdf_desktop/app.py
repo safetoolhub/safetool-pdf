@@ -10,7 +10,8 @@ import logging
 import sys
 from pathlib import Path
 
-faulthandler.enable()
+if sys.stderr is not None:
+    faulthandler.enable()
 
 # Configure logging based on user settings
 def setup_logging() -> None:
@@ -25,13 +26,13 @@ def setup_logging() -> None:
         log_dir.mkdir(exist_ok=True)
         log_file = log_dir / "safetool-pdf.log"
         
+        handlers: list[logging.Handler] = [logging.FileHandler(log_file, encoding="utf-8")]
+        if sys.stdout is not None:
+            handlers.append(logging.StreamHandler(sys.stdout))
         logging.basicConfig(
             level=logging.DEBUG,
             format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-            handlers=[
-                logging.FileHandler(log_file, encoding="utf-8"),
-                logging.StreamHandler(sys.stdout)
-            ]
+            handlers=handlers,
         )
         logging.info(f"Logging enabled. Log file: {log_file}")
     else:
