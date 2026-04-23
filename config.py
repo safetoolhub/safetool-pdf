@@ -42,6 +42,6 @@ APP_ATTRIBUTION_REQUIREMENT: str = (
 # Control which tools are enabled in the UI
 TOOL_OPTIMIZE_ENABLED: bool = True
 TOOL_COMBINE_ENABLED: bool = True
-TOOL_NUMBERING_ENABLED: bool = False
+TOOL_NUMBERING_ENABLED: bool = True
 TOOL_METADATA_ENABLED: bool = True
 TOOL_UNLOCK_ENABLED: bool = True
