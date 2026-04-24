@@ -36,7 +36,6 @@ class BaseToolCard(QFrame):
         self,
         title: str,
         description: str,
-        action_text: str,
         badge_text: str = "",
         enabled: bool = True,
         parent: QWidget | None = None,
@@ -44,7 +43,6 @@ class BaseToolCard(QFrame):
         super().__init__(parent)
         self._title_text = title
         self._desc_text = description
-        self._action_text = action_text
         self._is_enabled = enabled
         self._badge_text = badge_text
         self._config_enabled = enabled  # Store the config-level enabled state
@@ -53,8 +51,8 @@ class BaseToolCard(QFrame):
         self.setObjectName("toolCard")
         self.setFrameShape(QFrame.Shape.NoFrame)
         self.setLineWidth(0)
-        self.setMaximumWidth(400)
-        self.setMinimumHeight(240)
+        self.setMaximumWidth(320)
+        self.setMinimumHeight(100)
         
         # Main Layout
         self._main_layout = QVBoxLayout(self)
@@ -66,10 +64,10 @@ class BaseToolCard(QFrame):
         self._inner.setObjectName("toolCardInner")
         self._inner_layout = QVBoxLayout(self._inner)
         self._inner_layout.setContentsMargins(
-            DesignSystem.SPACE_24, DesignSystem.SPACE_24,
-            DesignSystem.SPACE_24, DesignSystem.SPACE_24,
+            DesignSystem.SPACE_16, DesignSystem.SPACE_16,
+            DesignSystem.SPACE_16, DesignSystem.SPACE_16,
         )
-        self._inner_layout.setSpacing(DesignSystem.SPACE_16)
+        self._inner_layout.setSpacing(DesignSystem.SPACE_8)
         
         self._main_layout.addWidget(self._inner)
 
@@ -118,16 +116,7 @@ class BaseToolCard(QFrame):
         text_container.addWidget(self._desc_label)
         
         self._inner_layout.addLayout(text_container)
-        
         self._inner_layout.addStretch()
-
-        # ── Action Area ──
-        self._action_btn = QPushButton(f"  {self._action_text}")
-        self._action_btn.setMinimumHeight(42)
-        self._action_btn.setCursor(Qt.CursorShape.PointingHandCursor)
-        # Connect the button click to the card's clicked signal
-        self._action_btn.clicked.connect(self.clicked.emit)
-        self._inner_layout.addWidget(self._action_btn)
 
     # ── Interaction & Hover ──
 
@@ -183,15 +172,6 @@ class BaseToolCard(QFrame):
         self._title_label.setStyleSheet(DesignSystem.get_tool_card_title_style(actual_enabled))
         self._desc_label.setStyleSheet(DesignSystem.get_tool_card_desc_style(actual_enabled))
         
-        # Update Button
-        self._action_btn.setEnabled(actual_enabled)
-        if actual_enabled:
-            self._action_btn.setStyleSheet(DesignSystem.get_primary_button_style())
-            icon_manager.set_button_icon(self._action_btn, "arrow-right", color="white", size=18)
-        else:
-            self._action_btn.setStyleSheet(DesignSystem.get_secondary_button_style())
-            icon_manager.set_button_icon(self._action_btn, "lock", color=DesignSystem.COLOR_TEXT_SECONDARY, size=18)
-
         # Update Cursor
         self.setCursor(QCursor(
             Qt.CursorShape.PointingHandCursor if actual_enabled 
@@ -206,7 +186,6 @@ class OptimizeToolCard(BaseToolCard):
         super().__init__(
             title=tr("tool_card.optimize.title"),
             description=tr("tool_card.optimize.description"),
-            action_text=tr("tool_card.optimize.action"),
             enabled=config.TOOL_OPTIMIZE_ENABLED,
             parent=parent,
         )
@@ -219,7 +198,6 @@ class CombineToolCard(BaseToolCard):
         super().__init__(
             title=tr("tool_card.combine.title"),
             description=tr("tool_card.combine.description"),
-            action_text=tr("tool_card.combine.action"),
             enabled=config.TOOL_COMBINE_ENABLED,
             parent=parent,
         )
@@ -232,7 +210,6 @@ class NumberingToolCard(BaseToolCard):
         super().__init__(
             title=tr("tool_card.number.title"),
             description=tr("tool_card.number.description"),
-            action_text=tr("tool_card.number.action"),
             enabled=config.TOOL_NUMBERING_ENABLED,
             parent=parent,
         )
@@ -245,7 +222,6 @@ class MetadataToolCard(BaseToolCard):
         super().__init__(
             title=tr("tool_card.metadata.title"),
             description=tr("tool_card.metadata.description"),
-            action_text=tr("tool_card.metadata.action"),
             enabled=config.TOOL_METADATA_ENABLED,
             parent=parent,
         )
@@ -258,7 +234,18 @@ class UnlockToolCard(BaseToolCard):
         super().__init__(
             title=tr("tool_card.unlock.title"),
             description=tr("tool_card.unlock.description"),
-            action_text=tr("tool_card.unlock.action"),
             enabled=config.TOOL_UNLOCK_ENABLED,
+            parent=parent,
+        )
+
+
+class SplitToolCard(BaseToolCard):
+    """Tool card for the Split PDF function."""
+
+    def __init__(self, parent: QWidget | None = None) -> None:
+        super().__init__(
+            title=tr("tool_card.split.title"),
+            description=tr("tool_card.split.description"),
+            enabled=config.TOOL_SPLIT_ENABLED,
             parent=parent,
         )

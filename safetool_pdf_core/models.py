@@ -35,6 +35,18 @@ class ToolName(enum.Enum):
     NUMBER = "number"
     STRIP_METADATA = "strip_metadata"
     UNLOCK = "unlock"
+    SPLIT = "split"
+
+
+class SplitMode(enum.Enum):
+    """How to split a PDF document."""
+
+    EVERY_PAGE = "every_page"
+    EVERY_N_PAGES = "every_n_pages"
+    ODD_EVEN = "odd_even"
+    BY_RANGE = "by_range"
+    BY_BOOKMARKS = "by_bookmarks"
+    BY_SIZE = "by_size"
 
 # ---------------------------------------------------------------------------
 # Analysis

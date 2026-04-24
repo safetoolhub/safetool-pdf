@@ -571,13 +571,18 @@ class AboutDialog(QDialog):
         available_tools = [
             (
                 "compress",
-                tr("about.tools_section.tools.optimizer.title"),
-                tr("about.tools_section.tools.optimizer.description"),
+                tr("tool_card.optimize.title"),
+                tr("tool_card.optimize.description"),
             ),
             (
                 "merge",
-                tr("about.tools_section.tools.merge.title"),
-                tr("about.tools_section.tools.merge.description"),
+                tr("tool_card.combine.title"),
+                tr("tool_card.combine.description"),
+            ),
+            (
+                "numeric",
+                tr("tool_card.number.title"),
+                tr("tool_card.number.description"),
             ),
             (
                 "tag",
@@ -588,6 +593,11 @@ class AboutDialog(QDialog):
                 "unlock",
                 tr("tool_card.unlock.title"),
                 tr("tool_card.unlock.description"),
+            ),
+            (
+                "scissors",
+                tr("tool_card.split.title"),
+                tr("tool_card.split.description"),
             ),
         ]
 
@@ -629,14 +639,14 @@ class AboutDialog(QDialog):
 
         upcoming_tools = [
             (
-                "scissors",
-                tr("about.tools_section.tools.split.title"),
-                tr("about.tools_section.tools.split.description"),
+                "file-edit",
+                tr("about.tools_section.tools.edit.title"),
+                tr("about.tools_section.tools.edit.description"),
             ),
             (
-                "counter",
-                tr("about.tools_section.tools.numberer.title"),
-                tr("about.tools_section.tools.numberer.description"),
+                "file-export",
+                tr("about.tools_section.tools.convert.title"),
+                tr("about.tools_section.tools.convert.description"),
             ),
         ]
 

@@ -121,6 +121,7 @@ class ResultsScreen(QWidget):
         icon_manager.set_button_icon(start_over_btn, "restart", size=18)
         start_over_btn.setStyleSheet(DesignSystem.get_secondary_button_style())
         start_over_btn.setMinimumWidth(160)
+        start_over_btn.setToolTip(tr("results.start_over_tooltip"))
         start_over_btn.clicked.connect(self.go_back.emit)
         btn_row.addWidget(start_over_btn)
 
@@ -129,6 +130,7 @@ class ResultsScreen(QWidget):
         icon_manager.set_button_icon(another_tool_btn, "tools", size=18)
         another_tool_btn.setStyleSheet(DesignSystem.get_secondary_button_style())
         another_tool_btn.setMinimumWidth(180)
+        another_tool_btn.setToolTip(tr("results.use_another_tool_tooltip"))
         another_tool_btn.clicked.connect(lambda: self.use_another_tool.emit(self._files))
         btn_row.addWidget(another_tool_btn)
 
@@ -138,6 +140,7 @@ class ResultsScreen(QWidget):
         export_btn = QPushButton(tr("results.export_report"))
         icon_manager.set_button_icon(export_btn, "file-export", size=16)
         export_btn.setStyleSheet(DesignSystem.get_secondary_button_style())
+        export_btn.setToolTip(tr("results.export_report_tooltip"))
         export_btn.clicked.connect(self._on_export_report)
         btn_row.addWidget(export_btn)
 
@@ -145,6 +148,7 @@ class ResultsScreen(QWidget):
         self._open_folder_btn = QPushButton(tr("results.open_folder"))
         icon_manager.set_button_icon(self._open_folder_btn, "folder-open", size=16)
         self._open_folder_btn.setStyleSheet(DesignSystem.get_primary_button_style())
+        self._open_folder_btn.setToolTip(tr("results.open_folder_tooltip"))
         self._open_folder_btn.clicked.connect(self._on_open_folder)
         btn_row.addWidget(self._open_folder_btn)
 
