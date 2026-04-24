@@ -12,7 +12,7 @@ from __future__ import annotations
 
 # ── Identity ─────────────────────────────────────────────────────────
 APP_NAME: str = "SafeTool PDF"
-APP_VERSION: str = "0.2.0"
+APP_VERSION: str = "0.3.0"
 APP_VERSION_SUFFIX: str = "beta"
 
 # ── Author / Organisation ────────────────────────────────────────────
@@ -45,3 +45,4 @@ TOOL_COMBINE_ENABLED: bool = True
 TOOL_NUMBERING_ENABLED: bool = True
 TOOL_METADATA_ENABLED: bool = True
 TOOL_UNLOCK_ENABLED: bool = True
+TOOL_SPLIT_ENABLED: bool = True

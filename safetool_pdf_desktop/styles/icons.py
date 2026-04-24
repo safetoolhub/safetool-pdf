@@ -30,6 +30,8 @@ class IconManager:
         # Core
         "file-pdf": "mdi6.file-pdf-box",
         "file-document": "mdi6.file-document-outline",
+        "file-document-multiple": "mdi6.file-document-multiple",
+        "bookmark-multiple": "mdi6.bookmark-multiple",
         "folder-open": "mdi6.folder-open-outline",
         "cog": "mdi6.cog-outline",
         "information": "mdi6.information-outline",
@@ -37,12 +39,14 @@ class IconManager:
         "ghost": "mdi6.ghost",
         "arrow-left": "mdi6.arrow-left",
         "arrow-right": "mdi6.arrow-right",
+        "arrow-expand-horizontal": "mdi6.arrow-expand-horizontal",
         "close-circle": "mdi6.close-circle-outline",
         "check-circle": "mdi6.check-circle-outline",
 
         # Strategy / Optimization
         "shield-check": "mdi6.shield-check-outline",
         "scale-balance": "mdi6.scale-balance",
+        "weight": "mdi6.weight",
         "rocket-launch": "mdi6.rocket-launch-outline",
         "tune": "mdi6.tune",
         "magnify": "mdi6.magnify",
@@ -85,6 +89,7 @@ class IconManager:
         # Multi-tool extras
         "tools": "mdi6.tools",
         "numeric": "mdi6.numeric",
+        "format-list-numbered": "mdi6.format-list-numbered",
         "shield-remove": "mdi6.shield-remove-outline",
         "lock-open-variant": "mdi6.lock-open-variant-outline",
         "progress-clock": "mdi6.progress-clock",

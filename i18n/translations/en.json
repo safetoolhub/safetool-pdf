@@ -27,17 +27,17 @@
   "tool_card": {
     "disabled_tooltip": "Feature not yet finished",
     "optimize": {
-      "title": "Optimize PDF",
+      "title": "Optimize",
       "description": "Intelligently reduce file size while preserving document quality and structure.",
       "action": "Get Started"
     },
     "combine": {
-      "title": "Combine PDFs",
+      "title": "Combine",
       "description": "Seamlessly merge multiple documents into a single professional PDF file.",
       "action": "Get Started"
     },
     "number": {
-      "title": "Numbering",
+      "title": "Number",
       "description": "Add a correlative red number to the top-right corner of the first page of each PDF.",
       "action": "Get Started"
     },
@@ -47,8 +47,13 @@
       "action": "Get Started"
     },
     "unlock": {
-      "title": "Manage Permissions",
+      "title": "Permissions & Passwords",
       "description": "Remove passwords if you know them and restore permissions like printing, copying, or modifying content.",
+      "action": "Get Started"
+    },
+    "split": {
+      "title": "Split",
+      "description": "Separate a PDF into multiple files by pages, ranges, bookmarks, or target size.",
       "action": "Get Started"
     }
   },
@@ -62,7 +67,8 @@
     "progress_title": "Merging…",
     "progress_status": "Adding {filename} ({current}/{total})",
     "output_filename_label": "Combined file name:",
-    "output_filename_placeholder": "merged"
+    "output_filename_placeholder": "merged",
+    "min_files_required": "You need to select at least 2 PDFs to combine them."
   },
   "simple_tool": {
     "btn_execute": "Execute",
@@ -235,7 +241,11 @@
     "header_strategy": "Strategy",
     "header_compression": "Compression",
     "start_over": "  Start Over",
-    "use_another_tool": "  Use another tool",
+    "start_over_tooltip": "Discard the current files and return to the home screen",
+    "use_another_tool": "  Back to Tool Selection",
+    "use_another_tool_tooltip": "Returns to the tool selection screen keeping the loaded files",
+    "export_report_tooltip": "Saves a summary of the results as a text file",
+    "open_folder_tooltip": "Opens the folder containing the first output file",
     "export_report": "  Export Report",
     "open_folder": "  Open Folder",
     "skipped": "Skipped",
@@ -273,6 +283,37 @@
     "unknown": "Unknown",
     "cancel": "Cancel"
   },
+  "split_screen": {
+    "title": "Split PDF",
+    "subtitle": "Choose how to split your PDF files. You can process one or multiple files at once.",
+    "mode_label": "Split mode",
+    "mode_every_page": "Every page (one file per page)",
+    "mode_every_page_desc": "Each page of the PDF will be exported as a separate file.",
+    "mode_odd_even": "Odd / even pages",
+    "mode_odd_even_desc": "Two files will be generated: one with odd pages (1, 3, 5…) and one with even pages (2, 4, 6…).",
+    "mode_every_n": "Every N pages",
+    "mode_by_range": "Manual range",
+    "mode_by_bookmarks": "By bookmarks",
+    "mode_by_bookmarks_desc": "The PDF will be split at top-level bookmarks (chapters). Requires the PDF to have bookmarks.",
+    "mode_by_size": "By target size",
+    "every_n_label": "Pages per file:",
+    "range_label": "Page ranges:",
+    "range_placeholder": "e.g. 1-3, 5, 8-10",
+    "range_hint": "Separate ranges with commas. Use a dash for ranges (e.g. 1-3). Use single numbers for individual pages.",
+    "size_label": "Target size:",
+    "size_note": "Actual size may vary depending on the content of each page.",
+    "output_label": "Output settings",
+    "suffix_label": "File suffix:",
+    "suffix_default": "part",
+    "same_folder_warning": "Output files will be saved in the same folder as the original file.",
+    "col_file": "FILE",
+    "col_pages": "PAGES",
+    "col_chunks": "ESTIMATED CHUNKS",
+    "chunks_estimated": "{count} chunk(s)",
+    "btn_split": "Split files",
+    "progress_title": "Splitting…",
+    "no_bookmarks_warning": "⚠ None of the selected files have bookmarks. Cannot split by bookmarks."
+  },
   "about": {
     "title": "About {name}",
     "tab": {
@@ -286,25 +327,25 @@
     },
     "welcome": {
       "title": "Welcome to SafeTool PDF!",
-      "description": "Optimize your PDF files securely and privately. All processing is done locally on your computer.",
+      "description": "Work with your PDF files securely and privately. All processing is done locally on your computer, with no internet connection required.",
       "workflow_title": "How does it work?",
-      "workflow_description": "Follow these 4 simple steps to optimize your PDFs:",
+      "workflow_description": "Follow these 4 simple steps to process your PDFs:",
       "steps": {
         "1": {
           "title": "Select your files",
           "description": "Drag & drop or select one or more PDF files."
         },
         "2": {
-          "title": "Automatic analysis",
-          "description": "The PDF structure is analyzed: images, fonts, forms, etc."
+          "title": "Choose a tool",
+          "description": "Select the operation you want to perform: optimize, merge, split, number, and more."
         },
         "3": {
-          "title": "Choose a strategy",
-          "description": "Compare presets (Lossless, Balanced, Maximum) and pick your preference."
+          "title": "Configure the options",
+          "description": "Adjust the available settings to suit your needs."
         },
         "4": {
-          "title": "Get results",
-          "description": "The optimized file is saved alongside the original with the _safetoolhub suffix."
+          "title": "Get the result",
+          "description": "The processed file is saved alongside the original with the _safetoolhub suffix."
         }
       },
       "tips": {
@@ -313,8 +354,8 @@
           "description": "Your files never leave your computer. No uploads, no tracking."
         },
         "presets": {
-          "title": "Smart presets",
-          "description": "3 ready-to-use strategies, plus a custom option."
+          "title": "6 tools",
+          "description": "Optimize, merge, split, number, metadata, and permissions."
         },
         "ghostscript": {
           "title": "Ghostscript",
@@ -360,6 +401,14 @@
         "split": {
           "title": "Split PDF",
           "description": "Separate a PDF into multiple individual files."
+        },
+        "edit": {
+          "title": "Edit PDFs",
+          "description": "Add, modify, or remove content inside your PDF documents."
+        },
+        "convert": {
+          "title": "Convert PDFs",
+          "description": "Transform PDFs to other formats: Word, Excel, images, and more."
         }
       }
     },

@@ -27,17 +27,17 @@
   "tool_card": {
     "disabled_tooltip": "Funcionalidad sin terminar todavía",
     "optimize": {
-      "title": "Optimizar PDF",
+      "title": "Optimizar",
       "description": "Reduce inteligentemente el tamaño del archivo preservando la calidad y estructura del documento.",
       "action": "Comenzar"
     },
     "combine": {
-      "title": "Combinar PDFs",
+      "title": "Combinar",
       "description": "Fusiona sin problemas múltiples documentos en un único archivo PDF profesional.",
       "action": "Comenzar"
     },
     "number": {
-      "title": "Numeración",
+      "title": "Numerar",
       "description": "Añade un número correlativo en rojo en la esquina superior derecha de la primera página de cada PDF.",
       "action": "Comenzar"
     },
@@ -47,8 +47,13 @@
       "action": "Comenzar"
     },
     "unlock": {
-      "title": "Gestionar permisos",
+      "title": "Permisos y contraseñas",
       "description": "Elimina contraseñas si las conoces y restaura permisos como imprimir, copiar o modificar contenido.",
+      "action": "Comenzar"
+    },
+    "split": {
+      "title": "Dividir",
+      "description": "Separa un PDF en varios archivos según páginas, rangos, marcadores o tamaño objetivo.",
       "action": "Comenzar"
     }
   },
@@ -62,7 +67,8 @@
     "progress_title": "Combinando…",
     "progress_status": "Añadiendo {filename} ({current}/{total})",
     "output_filename_label": "Nombre del archivo combinado:",
-    "output_filename_placeholder": "merged"
+    "output_filename_placeholder": "merged",
+    "min_files_required": "Para combinar archivos necesitas seleccionar al menos 2 PDFs."
   },
   "simple_tool": {
     "btn_execute": "Ejecutar",
@@ -235,7 +241,11 @@
     "header_strategy": "Estrategia",
     "header_compression": "Compresión",
     "start_over": "  Empezar de nuevo",
-    "use_another_tool": "  Usar otra herramienta",
+    "start_over_tooltip": "Descarta los archivos actuales y vuelve a la pantalla de inicio",
+    "use_another_tool": "  Volver a selección de herramientas",
+    "use_another_tool_tooltip": "Vuelve a la pantalla de selección de herramientas manteniendo los archivos cargados",
+    "export_report_tooltip": "Guarda un resumen de los resultados como archivo de texto",
+    "open_folder_tooltip": "Abre la carpeta que contiene el primer archivo de salida",
     "export_report": "  Exportar informe",
     "open_folder": "  Abrir carpeta",
     "skipped": "Omitido",
@@ -273,6 +283,37 @@
     "unknown": "Desconocido",
     "cancel": "Cancelar"
   },
+  "split_screen": {
+    "title": "Dividir PDF",
+    "subtitle": "Elige cómo dividir tus archivos PDF. Puedes procesar uno o varios a la vez.",
+    "mode_label": "Modo de división",
+    "mode_every_page": "Cada página (una por archivo)",
+    "mode_every_page_desc": "Cada página del PDF se exportará como un archivo independiente.",
+    "mode_odd_even": "Páginas pares / impares",
+    "mode_odd_even_desc": "Se generarán dos archivos: uno con las páginas impares (1, 3, 5…) y otro con las pares (2, 4, 6…).",
+    "mode_every_n": "Cada N páginas",
+    "mode_by_range": "Por rango manual",
+    "mode_by_bookmarks": "Por marcadores",
+    "mode_by_bookmarks_desc": "El PDF se dividirá por los marcadores de primer nivel (capítulos). Requiere que el PDF tenga marcadores.",
+    "mode_by_size": "Por tamaño objetivo",
+    "every_n_label": "Páginas por archivo:",
+    "range_label": "Rangos de páginas:",
+    "range_placeholder": "ej: 1-3, 5, 8-10",
+    "range_hint": "Separa los rangos con comas. Usa guión para rangos (ej: 1-3). Usa números sueltos para páginas individuales.",
+    "size_label": "Tamaño objetivo:",
+    "size_note": "El tamaño real puede variar según el contenido de cada página.",
+    "output_label": "Configuración de salida",
+    "suffix_label": "Sufijo de los archivos:",
+    "suffix_default": "parte",
+    "same_folder_warning": "Los archivos de salida se guardarán en la misma carpeta que el archivo original.",
+    "col_file": "ARCHIVO",
+    "col_pages": "PÁGINAS",
+    "col_chunks": "FRAGMENTOS ESTIMADOS",
+    "chunks_estimated": "{count} fragmento(s)",
+    "btn_split": "Dividir archivos",
+    "progress_title": "Dividiendo…",
+    "no_bookmarks_warning": "⚠ Ninguno de los archivos seleccionados tiene marcadores. No se puede dividir por marcadores."
+  },
   "about": {
     "title": "Acerca de {name}",
     "tab": {
@@ -286,25 +327,25 @@
     },
     "welcome": {
       "title": "¡Bienvenido a SafeTool PDF!",
-      "description": "Optimiza tus archivos PDF de forma segura y privada. Todo el procesamiento se realiza localmente en tu equipo.",
+      "description": "Trabaja con tus archivos PDF de forma segura y privada. Todo el procesamiento se realiza localmente en tu equipo, sin conexión a internet.",
       "workflow_title": "¿Cómo funciona?",
-      "workflow_description": "Sigue estos 4 sencillos pasos para optimizar tus PDFs:",
+      "workflow_description": "Sigue estos 4 sencillos pasos para procesar tus PDFs:",
       "steps": {
         "1": {
           "title": "Selecciona tus archivos",
           "description": "Arrastra o selecciona uno o varios archivos PDF."
         },
         "2": {
-          "title": "Análisis automático",
-          "description": "Se analiza la estructura del PDF: imágenes, fuentes, formularios, etc."
+          "title": "Elige una herramienta",
+          "description": "Selecciona la operación que quieres realizar: optimizar, combinar, dividir, numerar y más."
         },
         "3": {
-          "title": "Elige la estrategia",
-          "description": "Compara presets (Sin pérdida, Equilibrado, Máximo) y elige el que prefieras."
+          "title": "Configura las opciones",
+          "description": "Ajusta los parámetros disponibles según tus necesidades."
         },
         "4": {
-          "title": "Obtén resultados",
-          "description": "El archivo optimizado se guarda junto al original con el sufijo _safetoolhub."
+          "title": "Obtén el resultado",
+          "description": "El archivo procesado se guarda junto al original con el sufijo _safetoolhub."
         }
       },
       "tips": {
@@ -313,8 +354,8 @@
           "description": "Tus archivos nunca salen de tu equipo. Sin subidas, sin rastreo."
         },
         "presets": {
-          "title": "Presets inteligentes",
-          "description": "3 estrategias listas para usar, más una opción personalizada."
+          "title": "6 herramientas",
+          "description": "Optimizar, combinar, dividir, numerar, metadatos y permisos."
         },
         "ghostscript": {
           "title": "Ghostscript",
@@ -360,6 +401,14 @@
         "split": {
           "title": "Dividir PDF",
           "description": "Separa un PDF en múltiples archivos individuales."
+        },
+        "edit": {
+          "title": "Editar PDFs",
+          "description": "Añade, modifica o elimina contenido dentro de tus documentos PDF."
+        },
+        "convert": {
+          "title": "Convertir PDFs",
+          "description": "Transforma PDFs a otros formatos: Word, Excel, imágenes y más."
         }
       }
     },

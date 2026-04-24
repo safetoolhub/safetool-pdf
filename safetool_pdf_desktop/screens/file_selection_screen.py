@@ -15,6 +15,7 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QLabel,
     QPushButton,
+    QSizePolicy,
     QVBoxLayout,
     QWidget,
 )
@@ -27,6 +28,7 @@ from safetool_pdf_desktop.screens.tool_card import (
     MetadataToolCard,
     NumberingToolCard,
     OptimizeToolCard,
+    SplitToolCard,
     UnlockToolCard,
 )
 from safetool_pdf_desktop.styles.design_system import DesignSystem
@@ -112,7 +114,7 @@ class FileSelectionScreen(QWidget):
         self._formats_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         step_1_layout.addWidget(self._formats_label)
         
-        layout.addWidget(self._step_1_container)
+        layout.addWidget(self._step_1_container, 0)
 
         # --- STEP 2: TOOL SELECTION ---
         self._step_2_container = QWidget()
@@ -120,9 +122,10 @@ class FileSelectionScreen(QWidget):
         step_2_layout.setContentsMargins(0, 0, 0, 0)
         step_2_layout.setSpacing(DesignSystem.SPACE_16)
 
-        # Separator: "Choose a Tool"
-        separator = self._build_separator(tr("file_selection.step_2_title"))
-        step_2_layout.addWidget(separator)
+        # Step 2 Header
+        self._step_2_label = QLabel(tr("file_selection.step_2_title"))
+        self._step_2_label.setStyleSheet(DesignSystem.get_header_text_style())
+        step_2_layout.addWidget(self._step_2_label)
 
         # Tool cards container — responsive grid
         self._cards_container = QWidget()
@@ -145,23 +148,30 @@ class FileSelectionScreen(QWidget):
         self._unlock_card = UnlockToolCard()
         self._unlock_card.clicked.connect(self._on_unlock_clicked)
 
+        self._split_card = SplitToolCard()
+        self._split_card.clicked.connect(self._on_split_clicked)
+
         self._all_cards = [
             self._optimize_card,
             self._combine_card,
+            self._split_card,
             self._numbering_card,
-            self._metadata_card,
             self._unlock_card,
+            self._metadata_card,
         ]
 
         self._last_cols = 0
         self._relayout_cards()
 
         step_2_layout.addWidget(self._cards_container)
-        layout.addWidget(self._step_2_container)
+        layout.addWidget(self._step_2_container, 0)
         
-        # Initial State: Step 2 hidden
+        # Initial State: Step 2 hidden but retaining space
+        sp = self._step_2_container.sizePolicy()
+        sp.setRetainSizeWhenHidden(True)
+        self._step_2_container.setSizePolicy(sp)
         self._step_2_container.setVisible(False)
-
+        
         layout.addStretch()
 
     def resizeEvent(self, event) -> None:  # noqa: N802
@@ -170,11 +180,13 @@ class FileSelectionScreen(QWidget):
         self._relayout_cards()
 
     def _relayout_cards(self) -> None:
-        """Arrange tool cards in a responsive grid: 3 cols / 2 cols / 1 col."""
+        """Arrange tool cards in a responsive grid: 4 cols / 3 cols / 2 cols / 1 col."""
         w = self.width()
-        if w >= 1000:
+        if w >= 1100:
+            cols = 4
+        elif w >= 800:
             cols = 3
-        elif w >= 650:
+        elif w >= 550:
             cols = 2
         else:
             cols = 1
@@ -187,34 +199,11 @@ class FileSelectionScreen(QWidget):
         while self._cards_grid.count():
             self._cards_grid.takeAt(0)
 
-        max_w = 400 if cols > 1 else 600
+        max_w = 320 if cols > 1 else 600
         for i, card in enumerate(self._all_cards):
             card.setMaximumWidth(max_w)
             self._cards_grid.addWidget(card, i // cols, i % cols)
 
-    @staticmethod
-    def _build_separator(text: str) -> QWidget:
-        """Build a horizontal separator with centered text."""
-        container = QWidget()
-        h_layout = QHBoxLayout(container)
-        h_layout.setContentsMargins(0, DesignSystem.SPACE_8, 0, DesignSystem.SPACE_8)
-        h_layout.setSpacing(DesignSystem.SPACE_12)
-
-        line_left = QFrame()
-        line_left.setFrameShape(QFrame.Shape.HLine)
-        line_left.setStyleSheet(DesignSystem.get_separator_line_style())
-        h_layout.addWidget(line_left, 1)
-
-        label = QLabel(text)
-        label.setStyleSheet(DesignSystem.get_separator_label_style())
-        h_layout.addWidget(label)
-
-        line_right = QFrame()
-        line_right.setFrameShape(QFrame.Shape.HLine)
-        line_right.setStyleSheet(DesignSystem.get_separator_line_style())
-        h_layout.addWidget(line_right, 1)
-
-        return container
 
     # ── Slots ──
 
@@ -257,8 +246,17 @@ class FileSelectionScreen(QWidget):
     def _on_combine_clicked(self) -> None:
         """Emit tool_selected for Merge."""
         files = self._file_list.get_files()
-        if files:
-            self.tool_selected.emit(ToolName.MERGE, files)
+        if not files:
+            return
+        if len(files) < 2:
+            from PySide6.QtWidgets import QMessageBox
+            QMessageBox.information(
+                self,
+                tr("merge_screen.title"),
+                tr("merge_screen.min_files_required"),
+            )
+            return
+        self.tool_selected.emit(ToolName.MERGE, files)
 
     def _on_numbering_clicked(self) -> None:
         """Emit tool_selected for Numbering."""
@@ -277,6 +275,12 @@ class FileSelectionScreen(QWidget):
         files = self._file_list.get_files()
         if files:
             self.tool_selected.emit(ToolName.UNLOCK, files)
+
+    def _on_split_clicked(self) -> None:
+        """Emit tool_selected for Split."""
+        files = self._file_list.get_files()
+        if files:
+            self.tool_selected.emit(ToolName.SPLIT, files)
 
     def _on_view_details(self, path: Path) -> None:
         """Show the details dialog for a file (via right-click context menu)."""

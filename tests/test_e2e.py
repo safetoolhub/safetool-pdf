@@ -29,6 +29,7 @@ from safetool_pdf_core.models import (
     OptimizeOptions,
     PdfPermissions,
     PresetName,
+    SplitMode,
     ToolName,
 )
 from safetool_pdf_core.tools.merge import execute as merge_execute
@@ -1047,3 +1048,129 @@ class TestCrossToolE2E:
         strip_results = metadata_execute([unlocked], output_dir=tmp_output)
         assert strip_results[0].success is True
         assert strip_results[0].output_path.is_file()
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 6. SPLIT — end-to-end
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+class TestSplitE2E:
+    """End-to-end tests for the split tool."""
+
+    def _copy(self, src: Path, dst_dir: Path, prefix: str = "") -> Path:
+        import shutil
+        dst = dst_dir / (prefix + src.name)
+        shutil.copy2(src, dst)
+        return dst
+
+    # -- EVERY_PAGE -------------------------------------------------------
+
+    def test_split_every_page_multipage(
+        self, generated_pdfs: dict[str, Path], tmp_output: Path
+    ) -> None:
+        from safetool_pdf_core.tools.split import split
+        src = self._copy(generated_pdfs["large_100pages"], tmp_output, "ep_")
+        total_pages = _page_count(src)
+        results = split(src, SplitMode.EVERY_PAGE, {}, suffix="pg")
+        successes = [r for r in results if r.success]
+        assert len(successes) == total_pages
+        for r in successes:
+            assert r.output_path.is_file()
+            assert _page_count(r.output_path) == 1
+
+    # -- EVERY_N_PAGES ----------------------------------------------------
+
+    def test_split_every_n_pages(
+        self, generated_pdfs: dict[str, Path], tmp_output: Path
+    ) -> None:
+        from safetool_pdf_core.tools.split import split
+        src = self._copy(generated_pdfs["large_100pages"], tmp_output, "en_")
+        total_pages = _page_count(src)
+        n = 3
+        results = split(src, SplitMode.EVERY_N_PAGES, {"n": n}, suffix="n3")
+        successes = [r for r in results if r.success]
+        expected = (total_pages + n - 1) // n
+        assert len(successes) == expected
+        total_output_pages = sum(_page_count(r.output_path) for r in successes)
+        assert total_output_pages == total_pages
+
+    # -- ODD_EVEN ---------------------------------------------------------
+
+    def test_split_odd_even(
+        self, generated_pdfs: dict[str, Path], tmp_output: Path
+    ) -> None:
+        from safetool_pdf_core.tools.split import split
+        src = self._copy(generated_pdfs["large_100pages"], tmp_output, "oe_")
+        total_pages = _page_count(src)
+        results = split(src, SplitMode.ODD_EVEN, {}, suffix="oe")
+        successes = [r for r in results if r.success]
+        assert len(successes) == 2
+        total_out = sum(_page_count(r.output_path) for r in successes)
+        assert total_out == total_pages
+
+    # -- BY_RANGE ---------------------------------------------------------
+
+    def test_split_by_range(
+        self, generated_pdfs: dict[str, Path], tmp_output: Path
+    ) -> None:
+        from safetool_pdf_core.tools.split import split
+        src = self._copy(generated_pdfs["large_100pages"], tmp_output, "br_")
+        results = split(src, SplitMode.BY_RANGE, {"ranges": "1-5, 10-15, 20"}, suffix="rng")
+        successes = [r for r in results if r.success]
+        assert len(successes) == 3
+        assert _page_count(successes[0].output_path) == 5
+        assert _page_count(successes[1].output_path) == 6
+        assert _page_count(successes[2].output_path) == 1
+
+    # -- BY_BOOKMARKS -----------------------------------------------------
+
+    def test_split_by_bookmarks(
+        self, generated_pdfs: dict[str, Path], tmp_output: Path
+    ) -> None:
+        from safetool_pdf_core.tools.split import split
+        src = self._copy(generated_pdfs["with_bookmarks"], tmp_output, "bm_")
+        results = split(src, SplitMode.BY_BOOKMARKS, {}, suffix="bm")
+        successes = [r for r in results if r.success]
+        assert len(successes) >= 1
+        for r in successes:
+            assert r.output_path.is_file()
+
+    # -- BY_SIZE ----------------------------------------------------------
+
+    def test_split_by_size(
+        self, generated_pdfs: dict[str, Path], tmp_output: Path
+    ) -> None:
+        from safetool_pdf_core.tools.split import split
+        src = self._copy(generated_pdfs["large_100pages"], tmp_output, "sz_")
+        file_mb = src.stat().st_size / (1024 * 1024)
+        target = max(0.01, file_mb / 5)
+        results = split(src, SplitMode.BY_SIZE, {"target_mb": target}, suffix="sz")
+        successes = [r for r in results if r.success]
+        assert len(successes) >= 2
+
+    # -- BATCH ------------------------------------------------------------
+
+    def test_split_batch(
+        self, generated_pdfs: dict[str, Path], tmp_output: Path
+    ) -> None:
+        from safetool_pdf_core.tools.split import split_batch
+        src1 = self._copy(generated_pdfs["simple_text"], tmp_output, "ba1_")
+        src2 = self._copy(generated_pdfs["multiple_fonts"], tmp_output, "ba2_")
+        total = _page_count(src1) + _page_count(src2)
+        results = split_batch([src1, src2], SplitMode.EVERY_PAGE, {}, suffix="bp")
+        successes = [r for r in results if r.success]
+        assert len(successes) == total
+
+    # -- CANCELLATION -----------------------------------------------------
+
+    def test_split_cancellation(
+        self, generated_pdfs: dict[str, Path], tmp_output: Path
+    ) -> None:
+        from safetool_pdf_core.tools.split import split_batch
+        cancel = threading.Event()
+        cancel.set()
+        src = self._copy(generated_pdfs["large_100pages"], tmp_output, "cn_")
+        results = split_batch([src], SplitMode.EVERY_PAGE, {}, suffix="cc", cancel=cancel)
+        assert len(results) >= 1
+        assert results[0].success is False

@@ -139,6 +139,14 @@ class MainWindow(QMainWindow):
         self._unlock_screen.tool_complete.connect(self._on_tool_complete)
         self._stack.addWidget(self._unlock_screen)  # index 4
 
+        # Screen 6: Split PDF
+        from safetool_pdf_desktop.screens.split_screen import SplitScreen
+
+        self._split_screen = SplitScreen()
+        self._split_screen.go_back.connect(self._on_go_back)
+        self._split_screen.tool_complete.connect(self._on_tool_complete)
+        self._stack.addWidget(self._split_screen)  # index 5
+
     def _create_header(self) -> QFrame:
         """Create the branded header bar: Title | 'by safetoolhub' | settings + about."""
         card = QFrame()
@@ -262,6 +270,9 @@ class MainWindow(QMainWindow):
         elif tool == ToolName.UNLOCK:
             self._unlock_screen.set_files(files)
             self._stack.setCurrentIndex(4)
+        elif tool == ToolName.SPLIT:
+            self._split_screen.set_files(files)
+            self._stack.setCurrentIndex(5)
 
     @Slot()
     def _on_go_back(self) -> None:
